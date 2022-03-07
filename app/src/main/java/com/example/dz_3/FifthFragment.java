@@ -22,7 +22,7 @@ FragmentFifthBinding binding;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-		string=getArguments().getString("Key5");
+		string=getArguments().getString("Key4");
 		binding= FragmentFifthBinding.inflate(inflater, container, false);
         return binding.getRoot();
 

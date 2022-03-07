@@ -23,8 +23,7 @@ public class FourthFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-
-		string=getArguments().getString("Key4");
+		string = getArguments().getString("Key3");
 		binding = FragmentFourBinding.inflate(inflater, container, false);
 		return binding.getRoot();
 
@@ -33,14 +32,15 @@ public class FourthFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		binding.tvSet.setText(string);
+
+		binding.tvSet4.setText(string);
 
 		binding.btNext4.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Bundle bundle = new Bundle();
 				Fragment fragment = new FifthFragment();
-				bundle.putString("Key5", binding.etFirst.getText().toString());
+				bundle.putString("Key4", string);
 				fragment.setArguments(bundle);
 				requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.m_container, fragment).commit();
 			}

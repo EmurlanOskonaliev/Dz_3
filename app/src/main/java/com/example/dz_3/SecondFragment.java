@@ -21,7 +21,7 @@ public class SecondFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-
+		string = getArguments().getString("Key");
 		binding = FragmentSecondBinding.inflate(LayoutInflater.from(getContext()), container, false);
 		return binding.getRoot();
 
@@ -30,17 +30,15 @@ public class SecondFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		Bundle bundle = getArguments();
-
-		binding.tvSet.setText(bundle.getString("Key"));
+		binding.tvSet2.setText(string);
 		binding.btNext2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Bundle bundle = new Bundle();
-				Fragment fragment = new ThirdFragment();
-				bundle.putString("Key2", binding.etFirst.getText().toString());
+				ThirdFragment fragment = new ThirdFragment();
+				bundle.putString("Key2",string);
 				fragment.setArguments(bundle);
-				requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.m_container, fragment)
+				requireActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.m_container, fragment)
 					.commit();
 
 			}

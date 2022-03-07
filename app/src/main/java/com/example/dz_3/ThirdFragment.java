@@ -23,7 +23,8 @@ public class ThirdFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 
-		string=getArguments().getString("Key3");
+		string = getArguments().getString("Key2");
+
 		binding = FragmentThirdBinding.inflate(inflater, container, false);
 		return binding.getRoot();
 
@@ -32,16 +33,15 @@ public class ThirdFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		binding.tvSet.setText(string);
-
+		binding.tvSet3.setText(string);
 		binding.btNext3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Bundle bundle = new Bundle();
-				Fragment fragment = new ThirdFragment();
-				bundle.putString("Key4", binding.etFirst.getText().toString());
+				Fragment fragment = new FourthFragment();
+				bundle.putString("Key3",string);
 				fragment.setArguments(bundle);
-				requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.m_container, fragment).commit();
+				requireActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.m_container, fragment).commit();
 			}
 		});
 	}
